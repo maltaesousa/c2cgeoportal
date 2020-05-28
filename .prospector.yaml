@@ -1,10 +1,11 @@
 ---
+
 strictness: veryhigh
 
 ignore-paths:
   - node_modules
-  - setup.py
   - CONST_create_template
+  - setup.py
 
 mccabe:
   run: false

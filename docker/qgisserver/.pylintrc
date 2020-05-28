@@ -1,0 +1,7 @@
+# Can be moved to setup.cfg with pylint 2.5, prefixed with 'pylint.'.
+[MESSAGES CONTROL]
+disable=import-error
+
+
+[FORMAT]
+max-line-length=110

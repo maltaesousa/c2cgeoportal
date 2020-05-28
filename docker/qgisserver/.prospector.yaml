@@ -1,0 +1,7 @@
+---
+
+mccabe:
+  run: false
+
+mypy:
+  run: true
