@@ -11,3 +11,10 @@ mccabe:
 
 mypy:
   run: true
+
+bandit:
+  run: true
+  config: .bandit
+
+pyroma:
+  run: true

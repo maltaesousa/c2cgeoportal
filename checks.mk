@@ -15,12 +15,8 @@ prospector:
 	prospector --version
 	mypy --version
 	pylint --version --rcfile=/dev/null
-	prospector
-
-.PHONY: bandit
-bandit:
 	bandit --version
-	bandit --recursive -ll .
+	prospector
 
 .PHONY: isort
 isort:
