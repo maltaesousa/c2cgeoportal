@@ -6,8 +6,12 @@ defaultToSvg: true
 allowedReferers: &allowedHosts
   - !hostnameMatch
     host: ${MUTUALIZED_PRINT_URL}
+  ## For internal print
+  #- !hostnameMatch
+  #  host: ${VISIBLE_WEB_HOST}
   - !hostnameMatch
-    host: ${VISIBLE_WEB_HOST}
+    host: {{project}}.ch
+    allowSubDomains: true
   - !localMatch {}
 
 templates:
