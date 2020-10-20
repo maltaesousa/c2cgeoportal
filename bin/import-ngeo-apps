@@ -118,6 +118,16 @@ def main():
                 required=False,
             )
             data = _sub(
+                re.escape("<header>") + r".*" + re.escape("</header>"),
+                r'<div ng-include="\'{entry_point}static/{cache_version}/header.html'
+                r'\'"></div>'.format(
+                    entry_point="<%= htmlWebpackPlugin.options.vars.entry_point %>",
+                    cache_version="<%= htmlWebpackPlugin.options.vars.cache_version %>",
+                ),
+                data,
+                required=False,
+            )
+            data = _sub(
                 re.escape('<meta name="dynamicUrl" content="https://geomapfish-demo-')
                 + ".*"
                 + re.escape('.camptocamp.com/dynamic.json">'),
