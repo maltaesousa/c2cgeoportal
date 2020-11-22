@@ -1,5 +1,7 @@
 versions:
   branch_re: default is versions/branch_to_version_re/from or [0-9]+.[0-9]+
+  tag_re
+  tag_to_version_re
   branch_to_version_re:
     from: None
     to: None
@@ -8,25 +10,30 @@ versions:
     to: None
 publish:
   pypi:
-    - major
     - minor
   docker:
     images:
       camptocamp/pkg:
         tags:
           - '{version}'
+        validate_tags: True
         master_as: latest
+        group: default
     repository:
-      - dns: ghcr.io
+      github:
+        dns: ghcr.io
         versions:
           - major
           - minor
           - master
-      - versions:
+          - spesific
+      dockerhub:
+        versions:
          - major
          - minor
          - master
-         - branche
+         - branch
+         - specific
 check:
   black_config: True or attributes
   editorconfig: ...
@@ -38,13 +45,8 @@ check:
     timeout: True
   required_workflows:
     ci.yaml:
-      run:
-        - c2cci-check
-        - c2cci-publish
       if: "!startsWith(github.event.head_commit.message, '[skip ci] ')"
     rebuild.yaml: # use rebuild/files
-      run:
-        - c2cci-publish
       noif: True
     clean.yaml:
       run:
@@ -52,6 +54,7 @@ check:
     backport.yaml: True
     codeql.yaml: True
   versions:
+    outdated: True
     backport_tags: True
     rebuild:
       files:
