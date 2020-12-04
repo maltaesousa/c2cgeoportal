@@ -28,10 +28,10 @@
 # either expressed or implied, of the FreeBSD Project.
 
 
-from datetime import datetime
 import logging
 import random
 import string
+from datetime import datetime
 from urllib.parse import urlparse
 
 from pyramid.httpexceptions import HTTPBadRequest, HTTPFound, HTTPInternalServerError, HTTPNotFound

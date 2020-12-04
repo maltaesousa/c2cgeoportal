@@ -20,11 +20,9 @@
 !.tx
 !.pylintrc
 !.bandit
-!.isort.cfg
 !setup.cfg
 !lingua.cfg
 !.prospector.yaml
 !package.json
 !scripts/pylint-copyright.py
-!.git
 **/__pycache__/

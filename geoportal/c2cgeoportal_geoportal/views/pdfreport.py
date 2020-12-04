@@ -27,8 +27,8 @@
 # of the authors and should not be interpreted as representing official policies,
 # either expressed or implied, of the FreeBSD Project.
 
-from json import dumps, loads
 import logging
+from json import dumps, loads
 
 from pyramid.httpexceptions import HTTPBadRequest, HTTPForbidden
 from pyramid.view import view_config

@@ -28,8 +28,8 @@
 # either expressed or implied, of the FreeBSD Project.
 
 
-from urllib.parse import urljoin
 import uuid
+from urllib.parse import urljoin
 
 import pyramid.registry
 

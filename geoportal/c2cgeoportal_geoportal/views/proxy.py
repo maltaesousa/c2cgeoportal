@@ -30,12 +30,12 @@
 
 import logging
 import sys
-from typing import Dict, List, Union
 import urllib.parse
+from typing import Dict, List, Union
 
+import requests
 from pyramid.httpexceptions import HTTPBadGateway, exception_response
 from pyramid.response import Response
-import requests
 
 from c2cgeoportal_geoportal.lib.caching import (
     NO_CACHE,

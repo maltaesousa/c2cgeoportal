@@ -214,7 +214,7 @@ class TestLayerVectortiles(AbstractViewsTests):
         assert layer_vectortiles_test_data["layers"][3].metadatas[1].name == layer.metadatas[1].name
 
     def test_delete(self, test_app, dbsession):
-        from c2cgeoportal_commons.models.main import LayerVectorTiles, Layer, TreeItem
+        from c2cgeoportal_commons.models.main import Layer, LayerVectorTiles, TreeItem
 
         layer_id = dbsession.query(LayerVectorTiles.id).first().id
 

@@ -4,8 +4,8 @@ import email
 import re
 from unittest.mock import MagicMock, patch
 
-from pyramid.testing import DummyRequest
 import pytest
+from pyramid.testing import DummyRequest
 
 from . import AbstractViewsTests
 
@@ -15,8 +15,8 @@ from . import AbstractViewsTests
 def users_test_data(dbsession, transact):
     del transact
 
-    from c2cgeoportal_commons.models.static import User
     from c2cgeoportal_commons.models.main import Role
+    from c2cgeoportal_commons.models.static import User
 
     roles = []
     for i in range(0, 4):

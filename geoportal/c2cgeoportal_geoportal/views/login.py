@@ -30,10 +30,10 @@
 
 import json
 import logging
-from random import Random
 import sys
-from typing import Dict, Set, Tuple  # noqa # pylint: disable=unused-import
 import xml.dom.minidom  # noqa # pylint: disable=unused-import
+from random import Random
+from typing import Dict, Set, Tuple  # noqa # pylint: disable=unused-import
 
 import pyotp
 from pyramid.httpexceptions import HTTPBadRequest, HTTPForbidden, HTTPFound, HTTPUnauthorized

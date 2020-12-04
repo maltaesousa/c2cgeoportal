@@ -35,10 +35,10 @@ import re
 import subprocess
 import sys
 
-from pyramid.compat import input_
-from pyramid.scaffolds.template import Template
 import requests
 import yaml
+from pyramid.compat import input_
+from pyramid.scaffolds.template import Template
 
 
 class BaseTemplate(Template):  # pragma: no cover

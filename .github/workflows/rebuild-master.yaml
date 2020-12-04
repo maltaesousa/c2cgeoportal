@@ -1,0 +1,15 @@
+---
+name: Rebuild master
+
+on:
+  schedule:
+    - cron: '30 3 * * *'
+
+jobs:
+  main:
+    runs-on: ubuntu-20.04
+    name: Rebuild master
+    timeout-minutes: 1
+
+    steps:
+      - run: echo No rebuild on master

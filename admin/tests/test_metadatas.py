@@ -10,7 +10,7 @@ from . import AbstractViewsTests
 def metadatas_test_data(dbsession, transact):
     del transact
 
-    from c2cgeoportal_commons.models.main import LayerWMS, LayerWMTS, OGCServer, Metadata, Theme, LayerGroup
+    from c2cgeoportal_commons.models.main import LayerGroup, LayerWMS, LayerWMTS, Metadata, OGCServer, Theme
 
     ogc_server = OGCServer(name="ogc_server")
 

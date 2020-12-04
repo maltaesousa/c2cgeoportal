@@ -282,7 +282,7 @@ class TestLayerWMSViews(AbstractViewsTests):
         assert layer_wms_test_data["layers"][3].metadatas[1].name == layer.metadatas[1].name
 
     def test_convert_common_fields_copied(self, layer_wms_test_data, test_app, dbsession):
-        from c2cgeoportal_commons.models.main import LayerWMTS, LayerWMS
+        from c2cgeoportal_commons.models.main import LayerWMS, LayerWMTS
 
         layer = layer_wms_test_data["layers"][3]
 
@@ -365,7 +365,7 @@ class TestLayerWMSViews(AbstractViewsTests):
         self._check_submission_problem(resp, "{} is already used.".format(layer.name))
 
     def test_unicity_validator_does_not_matter_amongst_cousin(self, layer_wms_test_data, test_app, dbsession):
-        from c2cgeoportal_commons.models.main import LayerWMS, LayerGroup
+        from c2cgeoportal_commons.models.main import LayerGroup, LayerWMS
 
         assert 1 == dbsession.query(LayerGroup).filter(LayerGroup.name == "layer_group_0").count()
 
@@ -382,7 +382,7 @@ class TestLayerWMSViews(AbstractViewsTests):
         # assert str(layer.id) == re.match('http://localhost/admin/layers_wms/(.*)', resp.location).group(1)
 
     def test_delete(self, test_app, dbsession):
-        from c2cgeoportal_commons.models.main import LayerWMS, Layer, TreeItem
+        from c2cgeoportal_commons.models.main import Layer, LayerWMS, TreeItem
 
         layer_id = dbsession.query(LayerWMS.id).first().id
 

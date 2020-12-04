@@ -6,7 +6,13 @@
     "dependencies": {
         "angular-gettext-tools": "2.5.3",
         "commander": "6.2.0",
+        "prettier": "^2.2.1",
+        "prettier-plugin-java": "^1.0.1",
+        "prettier-plugin-sh": "^0.6.0",
         "puppeteer": "5.5.0",
         "url-parse": "1.4.7"
+    },
+    "devDependencies": {
+        "@trivago/prettier-plugin-sort-imports": "^1.3.0"
     }
 }
