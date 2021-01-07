@@ -33,8 +33,8 @@ def create_session_factory(url, configuration):
     configure_mappers()
     db_match = re.match(".*(@[^@]+)$", url)
     LOG.info("Connect to the database: ***%s", db_match.group(1) if db_match else "")
-    engine = sqlalchemy.create_engine(url, **configuration)
-    session_factory = sessionmaker()
+    engine = sqlalchemy.create_engine(url, pool_pre_ping=True, **configuration)
+    session_factory = sessionmaker(autocommit=True)
     session_factory.configure(bind=engine)
     return session_factory
 
@@ -207,7 +207,6 @@ class OGCServerAccessControl(QgsAccessControlFilter):
                 self.ogcserver = (
                     session.query(OGCServer).filter(OGCServer.name == ogcserver_name).one_or_none()
                 )
-                session.close()
                 if self.ogcserver is None:
                     LOG.error(
                         "No OGC server found for '%s', project: '%s' => no rights", ogcserver_name, map_file
@@ -416,7 +415,6 @@ class OGCServerAccessControl(QgsAccessControlFilter):
 
             session = self.DBSession()
             access, area = self.get_area(layer, session)
-            session.close()
             if access is Access.FULL:
                 LOG.debug("layerFilterSubsetString no area")
                 return None
@@ -456,7 +454,6 @@ class OGCServerAccessControl(QgsAccessControlFilter):
 
             session = self.DBSession()
             access, area = self.get_area(layer, session)
-            session.close()
             if access is Access.FULL:
                 LOG.debug("layerFilterExpression no area")
                 return None
@@ -498,7 +495,6 @@ class OGCServerAccessControl(QgsAccessControlFilter):
             gmf_layers = self.get_layers(session)[ogc_layer_name]
 
             roles = self.get_roles(session)
-            session.close()
             access, _ = self.get_restriction_areas(gmf_layers, roles=roles)
             if access is not Access.NO:
                 rights.canRead = True
@@ -541,7 +537,6 @@ class OGCServerAccessControl(QgsAccessControlFilter):
         try:
             session = self.DBSession()
             access, area = self.get_area(layer, session, read_write=True)
-            session.close()
             if access is Access.FULL:
                 LOG.debug("layerFilterExpression no area")
                 return True
@@ -558,7 +553,6 @@ class OGCServerAccessControl(QgsAccessControlFilter):
         # Root...
         session = self.DBSession()
         roles = self.get_roles(session)
-        session.close()
         if roles == "ROOT":
             return "{}-{}".format(self.serverInterface().requestHandler().parameter("Host"), -1)
         return "{}-{}".format(
