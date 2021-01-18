@@ -25,6 +25,12 @@ publish:
       - name: camptocamp/geomapfish-config
       - name: camptocamp/geomapfishapp-geoportal
       # 2.4
+
+      - name: camptocamp/geomapfish-qgisserver
+        group: qgis-configurable-serviceurl
+        tags:
+          - gmf{version}-qgisconfigurable-serviceurl
+
       - name: camptocamp/geomapfish-qgisserver
         group: qgis-3.10
         tags:
