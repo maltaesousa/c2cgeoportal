@@ -249,7 +249,7 @@ class GeomapfishConfigExtractor(Extractor):  # pragma: no cover
 
         # Collect layers enum values (for filters)
 
-        from c2cgeoportal_commons.models import DBSessions  # pylint: disable=import-outside-toplevel
+        from c2cgeoportal_commons.models import DBSession, DBSessions  # pylint: disable=import-outside-toplevel
         from c2cgeoportal_commons.models.main import Metadata  # pylint: disable=import-outside-toplevel
 
         enums = []
@@ -274,12 +274,7 @@ class GeomapfishConfigExtractor(Extractor):  # pragma: no cover
         names = [e["name"] for e in defs if e.get("translate", False)]
 
         if names:
-            engine = sqlalchemy.create_engine(config["sqlalchemy.url"])
-            Session = sqlalchemy.orm.session.sessionmaker()  # noqa
-            Session.configure(bind=engine)
-            session = Session()
-
-            query = session.query(Metadata).filter(Metadata.name.in_(names))  # pylint: disable=no-member
+            query = DBSession.query(Metadata).filter(Metadata.name.in_(names))  # pylint: disable=no-member
             for metadata in query.all():
                 location = "metadata/{}/{}".format(metadata.name, metadata.id)
                 metadata_list.append(Message(None, metadata.value, None, [], "", "", (filename, location)))
