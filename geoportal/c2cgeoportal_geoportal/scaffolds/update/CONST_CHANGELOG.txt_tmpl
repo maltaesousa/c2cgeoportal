@@ -7,8 +7,10 @@ Version 2.6.0
 Information to know before starting the upgrade
 -----------------------------------------------
 
-Simple application
-..................
+Client application configuration
+................................
+
+
 
 A mode "simple application" has been introduced, see `the documentation
 <https://camptocamp.github.io/c2cgeoportal/${MAIN_BRANCH}/integrator/create_application.html#simple-application>`_
