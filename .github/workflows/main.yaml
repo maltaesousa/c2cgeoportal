@@ -24,6 +24,8 @@ jobs:
       MAJOR_VERSION: 2.6
 
     steps:
+      - run: npm list --global
+      - run: false
       - run: '! ls BACKPORT_TODO'
       - run: df -h
       - run: docker system prune --all --force
