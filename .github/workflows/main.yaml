@@ -25,6 +25,8 @@ jobs:
 
     steps:
       - run: npm list --global
+      - run: cd geoportal ; npm install
+      - run: cd geoportal ; npm list
       - run: false
       - run: '! ls BACKPORT_TODO'
       - run: df -h
