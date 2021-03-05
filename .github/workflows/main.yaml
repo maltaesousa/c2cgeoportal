@@ -25,6 +25,7 @@ jobs:
 
     steps:
       #- run: npm list --global
+      - uses: actions/checkout@v2
       - run: cd geoportal ; npm install
       - run: cd geoportal ; npm list
       - run: false
