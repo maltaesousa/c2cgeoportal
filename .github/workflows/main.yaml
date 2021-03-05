@@ -24,7 +24,7 @@ jobs:
       MAJOR_VERSION: 2.6
 
     steps:
-      - run: npm list --global
+      #- run: npm list --global
       - run: cd geoportal ; npm install
       - run: cd geoportal ; npm list
       - run: false
